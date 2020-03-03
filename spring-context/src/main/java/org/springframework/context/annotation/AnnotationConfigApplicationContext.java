@@ -57,6 +57,10 @@ public class AnnotationConfigApplicationContext extends GenericApplicationContex
 
 	private final ClassPathBeanDefinitionScanner scanner;
 
+	static{
+		System.out.println("AnnotationConfigApplication static init====");
+	}
+
 
 	/**
 	 * Create a new AnnotationConfigApplicationContext that needs to be populated
@@ -78,6 +82,7 @@ public class AnnotationConfigApplicationContext extends GenericApplicationContex
 	}
 
 	/**
+	 * 创建一个新的AnnotationConfigApplicationContext,从给定的component class和自动刷新容器获得bean的定义，入参为一个或多个component类，比如有@Configuration注解的类
 	 * Create a new AnnotationConfigApplicationContext, deriving bean definitions
 	 * from the given component classes and automatically refreshing the context.
 	 * @param componentClasses one or more component classes &mdash; for example,

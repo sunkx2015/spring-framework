@@ -47,6 +47,10 @@ import org.springframework.util.StringUtils;
  */
 public class DefaultResourceLoader implements ResourceLoader {
 
+	static{
+		System.out.println("DefaultResourceLoader static load");
+	}
+
 	@Nullable
 	private ClassLoader classLoader;
 

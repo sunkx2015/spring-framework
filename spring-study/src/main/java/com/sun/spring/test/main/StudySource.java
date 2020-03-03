@@ -1,7 +1,7 @@
-package org.springframework.test.debug;
+package com.sun.spring.test.main;
 
+import com.sun.spring.test.service.ObjInterface;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.test.service.ObjInterface;
 
 public class StudySource {
 
