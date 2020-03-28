@@ -39,6 +39,11 @@ public class MyService //extends ApplicationObjectSupport
 		System.out.println("myService E====================");
 	}
 
+	public double divNum(int i,int y){
+		System.out.println(i/y);
+		return i/y;
+	}
+
 //	@Override
 //	protected void initApplicationContext(ApplicationContext context) throws BeansException {
 //		this.context = context;

@@ -14,6 +14,7 @@ repositories {
 dependencies {
     compile(project(":spring-core"))
     compile(project(":spring-context"))
+    compile(project(":spring-aspects"))
     compile group: 'org.apache.tomcat', name: 'tomcat-catalina', version: '10.0.0-M1'
     testCompile group: 'junit', name: 'junit', version: '4.12'
 }

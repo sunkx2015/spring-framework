@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Primary;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -39,6 +40,25 @@ public class BeanConfig {
 	public Book javaBook(){
 		return new Book("java Advanced development");
 	}
+
+	//默认的
+	@Bean("profileBook")
+	public Book javaBook5(){
+		return new Book("java env noMarl");
+	}
+	//为测试环境时候
+	@Profile("test")
+	@Bean("profileBook")
+	public Book javaBook3(){
+		return new Book("java env test");
+	}
+	//为prod环境时候
+	@Profile("prod")
+	@Bean("profileBook")
+	public Book javaBook4(){
+		return new Book("java env prod");
+	}
+
 	//------------
 
 	//测试Autowried

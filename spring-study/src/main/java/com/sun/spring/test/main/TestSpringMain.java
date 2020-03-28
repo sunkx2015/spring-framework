@@ -3,6 +3,7 @@ package com.sun.spring.test.main;
 import com.sun.spring.test.bean.Book;
 import com.sun.spring.test.bean.BookLabel;
 import com.sun.spring.test.bean.Car;
+import com.sun.spring.test.config.SpringProfileConfig;
 import com.sun.spring.test.config.SpringStartConfig;
 import com.sun.spring.test.service.MyService;
 import org.springframework.context.ApplicationContext;
@@ -21,7 +22,7 @@ public class TestSpringMain {
 		 * org.springframework.context.event.internalEventListenerProcessor
 		 * org.springframework.context.event.internalEventListenerFactory
 		 */
-		printBeans(annotationConfigApplicationContext);
+		//printBeans(annotationConfigApplicationContext);
 		/**
 		 * 3种扫描方式
 		 * 1.context.scan("传入扫描的包，数组")
@@ -34,11 +35,13 @@ public class TestSpringMain {
 		//方法一:扫描自己的包
 		//annotationConfigApplicationContext.scan(new String[]{"com.sun.spring.test.bean"});
 		//方法二:指定configClass,@Configuration来指定了扫描路径
-		annotationConfigApplicationContext.register(SpringStartConfig.class);
+		//扫描前设置环境
+		//annotationConfigApplicationContext.getEnvironment().setActiveProfiles("test");
+		annotationConfigApplicationContext.register(SpringProfileConfig.class);
 		//刷新容器
 		annotationConfigApplicationContext.refresh();
 		//
-		printBeans(annotationConfigApplicationContext);
+		//printBeans(annotationConfigApplicationContext);
 		//===============================================
 		/**
 		 * spring的bean是单例的,测试bean属性变化
@@ -70,8 +73,23 @@ public class TestSpringMain {
 		/**
 		 * 测试@Primary
 		 */
-		MyService myService = (MyService)annotationConfigApplicationContext.getBean("myService");
-		myService.sayHello();
+//		MyService myService = (MyService)annotationConfigApplicationContext.getBean("myService");
+//		myService.sayHello();
+
+		/**
+		 * 测试@profile
+		 */
+		//在扫描前设置
+		//annotationConfigApplicationContext.getEnvironment().setActiveProfiles("prod");
+//		Book book = (Book)annotationConfigApplicationContext.getBean("profileBook");
+//		System.out.println(book.getName());
+
+		/**
+		 * 测试AOP
+		 */
+		MyService myService = annotationConfigApplicationContext.getBean(MyService.class);
+		//myService.sayHello();
+		myService.divNum(1,2);
 	}
 
 	private static void printBeans(AnnotationConfigApplicationContext context){
